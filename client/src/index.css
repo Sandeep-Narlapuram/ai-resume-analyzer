@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-ink_text-primary font-body antialiased;
+    background-image: theme('backgroundImage.grid-glow');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  body.light-mode {
+    @apply bg-slate-50 text-slate-900;
+    background-image: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-violet-500/40 text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-violet-500/30 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-violet-500/50;
+  }
+
+  /* Visible keyboard focus for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #7C5CFF;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card, the app's core visual language */
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-glass;
+  }
+
+  .glass-panel {
+    @apply glass rounded-2xl;
+  }
+
+  .light-mode .glass {
+    @apply bg-white/70 border-slate-200/80 shadow-lg backdrop-blur-xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-violet-500 to-aqua-500;
+  }
+
+  .btn-focus-ring {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500;
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.09) 37%, rgba(255,255,255,0.04) 63%);
+    background-size: 400px 100%;
+    @apply animate-shimmer;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-mono font-medium border;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

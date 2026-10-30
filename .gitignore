@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Build files
+dist/
+coverage/
+
+# Logs
+*.log
+
+# Uploaded resumes and private data
+storage/resumes/
+uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
